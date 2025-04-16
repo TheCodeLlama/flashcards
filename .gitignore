@@ -133,4 +133,8 @@ sketch
 .idea/
 .idea
 **/*.iml
+
+**/*.env
+.env
+*.env
 # End of https://www.toptal.com/developers/gitignore/api/react,java,intellij+all
