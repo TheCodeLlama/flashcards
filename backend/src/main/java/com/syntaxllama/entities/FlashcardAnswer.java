@@ -16,22 +16,30 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "flashcard_answers")
+public class FlashcardAnswer {
     @Id
     @GeneratedValue
     private UUID id;
 
-    @Column(name = "firebase_uid", unique = true, nullable = false)
-    private String firebaseUid;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @ToString.Exclude
+    private User user;
 
-    private String username;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "flashcard_id", nullable = false)
+    @ToString.Exclude
+    private Flashcard flashcard;
 
-    @Column(name = "is_admin")
-    private boolean isAdmin;
+    @Column(name = "is_correct")
+    private boolean isCorrect;
 
-    @Column(name = "created_at")
-    private Instant createdAt;
+    @Column(name = "time_taken_seconds")
+    private int timeTakenSeconds;
+
+    @Column(name = "answered_at")
+    private Instant answeredAt;
 
     @Override
     public final boolean equals(Object o) {
@@ -40,8 +48,8 @@ public class User {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        User user = (User) o;
-        return getId() != null && Objects.equals(getId(), user.getId());
+        FlashcardAnswer that = (FlashcardAnswer) o;
+        return getId() != null && Objects.equals(getId(), that.getId());
     }
 
     @Override

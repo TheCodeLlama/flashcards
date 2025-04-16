@@ -16,22 +16,40 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "feedback")
+public class Feedback {
     @Id
     @GeneratedValue
     private UUID id;
 
-    @Column(name = "firebase_uid", unique = true, nullable = false)
-    private String firebaseUid;
+    // Feedback sender
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sender_id", nullable = false)
+    @ToString.Exclude
+    private User sender;
 
-    private String username;
+    // targetType could be 'deck' or 'flashcard'
+    @Column(name = "target_type")
+    private String targetType;
 
-    @Column(name = "is_admin")
-    private boolean isAdmin;
+    // targetId (deck id or flashcard id)
+    @Column(name = "target_id")
+    private UUID targetId;
+
+    @Column(columnDefinition = "TEXT")
+    private String message;
+
+    @Column(name = "is_read")
+    private boolean isRead;
+
+    // 'pending', 'implemented', 'denied'
+    private String status;
 
     @Column(name = "created_at")
     private Instant createdAt;
+
+    @Column(name = "updated_at")
+    private Instant updatedAt;
 
     @Override
     public final boolean equals(Object o) {
@@ -40,8 +58,8 @@ public class User {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        User user = (User) o;
-        return getId() != null && Objects.equals(getId(), user.getId());
+        Feedback feedback = (Feedback) o;
+        return getId() != null && Objects.equals(getId(), feedback.getId());
     }
 
     @Override
