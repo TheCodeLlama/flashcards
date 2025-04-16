@@ -1,0 +1,154 @@
+.root {
+    background-color: #0b0e12;
+    color: white;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+.appbar {
+    background-color: transparent;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+.navLinks {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.loginButton {
+    color: orange;
+    border-color: orange;
+}
+
+.heroContainer {
+    max-width: 1920px;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.heroContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.heroText {
+    max-width: 600px;
+}
+
+.headline {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    margin-bottom: 2rem;
+    color: #bbb;
+}
+
+.cta {
+    background-color: orange;
+    color: #000;
+}
+
+.heroImage {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flashcardStack {
+    position: relative;
+}
+
+.flashcard {
+    width: 336px;
+    height: 405px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: all 0.3s ease;
+}
+
+.backCard {
+    background-color: #161a20;
+    top: -40px;
+    right: 0px;
+    transform: rotate(-6deg);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+    z-index: 1;
+}
+
+.middleCard {
+    background-color: #161a20;
+    top: 10px;
+    left: 15px;
+    transform: rotate(8deg);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+.topCard {
+    background-color: #161a20;
+    top: 0;
+    left: 10px;
+    z-index: 3;
+    border: none;
+    box-shadow: 0 6px 30px rgba(0,0,0,.75);
+    overflow: hidden;
+    position: relative;
+}
+
+.flashcardHeader {
+    height: 15%;
+    background-color: #e58139;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    margin: -1rem -1rem 1rem -1rem;
+}
+
+.flashcardTitle {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 4.5rem !important;
+    margin-bottom: 3.5rem !important;
+    font-weight: 500 !important;
+}
+
+.flashcardLineShort {
+    height: 10px;
+    background-color: #e58139;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    width: 55%;
+}
+
+.flashcardLine {
+    height: 10px;
+    background-color: #e58139;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    width: 80%;
+}
+
+.image {
+    display: none;
+}
