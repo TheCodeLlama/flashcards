@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -12,7 +11,6 @@ import java.util.UUID;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
@@ -52,13 +50,4 @@ public class DeckTag {
     public final int hashCode() {
         return Objects.hash(deckId, tagId);
     }
-}
-
-// Composite key class for DeckTag
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class DeckTagId implements Serializable {
-    private UUID deckId;
-    private UUID tagId;
 }
